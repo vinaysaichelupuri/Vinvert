@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import {  Zap, Settings, Download, Image as ImageIcon } from 'lucide-react';
-import ImageUploader from './components/ImageUploader';
-import ConversionModal from './components/ConversionModel';
-import ResultsDisplay from './components/ResultsDisplay';
-import type { ConversionResult } from './types/conversion';
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Settings, Download, Image as ImageIcon } from "lucide-react";
+import logo from './assets/VS.jpg'
+import ImageUploader from "./components/ImageUploader";
+import ConversionModal from "./components/ConversionModel";
+import ResultsDisplay from "./components/ResultsDisplay";
+import type { ConversionResult } from "./types/conversion";
 
 function App() {
   const [uploadedImage, setUploadedImage] = useState<File | null>(null);
   const [showModal, setShowModal] = useState(false);
-  const [conversionResult, setConversionResult] = useState<ConversionResult | null>(null);
+  const [conversionResult, setConversionResult] =
+    useState<ConversionResult | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
 
   const handleImageUploaded = (image: File) => {
@@ -47,7 +49,11 @@ function App() {
           >
             <div className="flex items-center space-x-3">
               <div className="p-2 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg">
-                <Zap className="w-8 h-8 text-white" />
+                <img
+                  src={logo}
+                  alt="Logo"
+                  className="w-8 h-8 object-contain"
+                />
               </div>
               <div>
                 <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
@@ -90,7 +96,8 @@ function App() {
                   Convert & Optimize Images
                 </h2>
                 <p className="text-xl text-gray-400">
-                  Upload any image and configure your perfect conversion settings
+                  Upload any image and configure your perfect conversion
+                  settings
                 </p>
               </div>
               <ImageUploader onImageUploaded={handleImageUploaded} />
@@ -142,7 +149,8 @@ function App() {
               </div>
             </div>
             <p className="text-gray-500 text-sm">
-              All processing happens in your browser. Your images never leave your device.
+              All processing happens in your browser. Your images never leave
+              your device.
             </p>
           </div>
         </div>
